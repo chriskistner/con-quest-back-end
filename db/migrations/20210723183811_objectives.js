@@ -2,7 +2,8 @@
 exports.up = function(knex) {
     return knex.schema.createTable('characters', table => {
         table.increments()
-        table.integer('character_id').references('id').inTable('characters')
+        table.integer('character_id').notNullable()
+        table.foreign('character_id').references('characters.id')
         table.string('name').notNullable()
         table.integer('cost_stamina').notNullable().defaultsTo(0)
         table.integer('cost_cash').notNullable().defaultsTo(0)
