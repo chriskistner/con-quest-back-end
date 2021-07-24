@@ -1,6 +1,6 @@
 
 exports.up = function(knex) {
-    return knex.schema.createTable('characters', table => {
+    return knex.schema.createTable('cards', table => {
         table.increments()
         table.string('name').notNullable()
         table.string('type').notNullable()
