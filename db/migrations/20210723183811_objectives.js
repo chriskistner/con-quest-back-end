@@ -4,6 +4,8 @@ exports.up = function(knex) {
         table.increments()
         table.integer('character_id').notNullable()
         table.foreign('character_id').references('characters.id')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE')
         table.string('name').notNullable()
         table.string('flavor_text')
         table.string('location').notNullable()
