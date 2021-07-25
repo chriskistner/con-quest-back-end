@@ -4,7 +4,7 @@ exports.up = function(knex) {
         table.increments()
         table.string('name').notNullable()
         table.string('type').notNullable()
-        table.string('flaver_text')
+        table.string('flavor_text')
         table.string('instructions').notNullable()
         table.timestamps(true, true)
       }); 
