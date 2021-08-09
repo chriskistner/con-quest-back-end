@@ -4,6 +4,9 @@ const getAllCards = (req, res, next) => {
 
     models.getAllCards()
       .then(cards => {
+        if (!cards) {
+          next({ status: 400, error: 'Unable to retrieve cards' });
+        }
         res.send(cards)
       })
       .catch(next);
@@ -42,8 +45,9 @@ const getAllCards = (req, res, next) => {
 
   const updateCard = (req, res, next) => {
     const cardId = req.params.card_id;
+    const updatedCard = req.body;
 
-    models.updateCard(cardId)
+    models.updateCard(cardId, updatedCard)
       .then(id => {
         if (!id) {
           next({ status: 400, error: 'Unable to update card' })
