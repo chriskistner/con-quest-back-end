@@ -1,7 +1,7 @@
 const router = require('express').Router({ mergeParams: true });
-const characterCon = require('../controllers/cards');
+const characterCon = require('../controllers/characters');
 
-router.get('/:character_id', characterCon.getCaracter);
+router.get('/:character_id', characterCon.getCharacter);
 router.get('/', characterCon.getCharacters);
 router.post('/', characterCon.createCharacter);
 router.delete('/:character_id', characterCon.removeCharacter);
