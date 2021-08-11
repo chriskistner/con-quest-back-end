@@ -6,9 +6,6 @@ router.post('/', objCon.createObjective);
 router.delete('/', objCon.DeleteObjective);
 router.put('/', objCon.UpdateObjective);
 
-router.post('/character/:character_id/objective/:objective_id', 
-    objCon.AddObjectiveToCharacter);
-router.delete('/character/:character_id/objective/:objective_id', 
-    objCon.DropObjectiveFromCharacter);
+router.get('/character/:character_id', objCon.getCharacterObjectives);
 
 module.exports = router
