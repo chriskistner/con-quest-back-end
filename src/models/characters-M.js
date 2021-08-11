@@ -38,5 +38,36 @@ const getAllCharacters = () => {
     });
   };
 
+  const deleteCharacter = (characterId) => {
+      return db('characters')
+      .where({id: characterId})
+      .del()
+      .returning("*")
+      .then(data => {
+          if (!data) {
+              throw { status: 400, error: 'Unable to delete character.' }
+          } else {
+              return data[0].id
+          }
+      });
+  }
 
-  module.exports = { getAllCharacters, getCharacter, createCharacter}
+  const updateCharacter = (characterId, updatedCharacter) => {
+      const { name, description, color} = updatedCharacter;
+      return db('characters')
+      .where({id: characterId})
+      .update({name, description, color })
+      .then(data => {
+        if (!data) {
+            throw { status: 400, error: 'Unable to update character.' }
+        } else {
+            return data
+        }
+      });
+  };
+
+  module.exports = { getAllCharacters, 
+    getCharacter, 
+    createCharacter, 
+    deleteCharacter,
+    updateCharacter};
